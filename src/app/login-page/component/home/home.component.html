@@ -1,0 +1,53 @@
+<div class="container" *ngIf="!loggedIn">
+    <h2>Sign Up</h2>
+    <form #userForm="ngForm">
+      <label for="username">Username</label>
+      
+      <input type="text" name="username" id="username"  [(ngModel)]="signobj.username"  required>
+      <!-- <p *ngIf="ifExist()"></p> -->
+      
+
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" [(ngModel)]="signobj.email" required>
+      <!-- <p *ngIf="ifExists()"></p> -->
+     
+
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" [(ngModel)]="signobj.password" required>
+
+      <button id='one' type="submit" (click)="signedIn()">Sign In</button><br><br>
+      <p>Already have an account? <span (click)="loggedIn = true">Sign In</span></p>
+
+      <p *ngIf="userForm.invalid && (userForm.dirty || userForm.submitted)"></p>
+
+    </form>
+  </div>
+
+
+<div class="container1" *ngIf="loggedIn && !forgot">
+    <h2>Login</h2>
+    <form #useForm1="ngForm">
+      <label for="username">Username</label>
+      <input type="text" name="username1" id="username1" [(ngModel)]="loginobj.username" required>
+
+      <label for="password">Password</label>
+      <input type="password" name="password1" id="password1" [(ngModel)]="loginobj.password" required>
+
+      <button id='one1' type="submit"(click)="loginedIn()" >Login</button><br><br>
+      <p style="color: rgb(93, 0, 255);"><span (click)="forgot=true">forgot password ?</span> </p>
+    </form>
+  </div>
+
+
+  <div class="container1" *ngIf="forgot">
+    <h2>Create New Password</h2>
+    <form #useForm1="ngForm">
+      <label for="username">New Password</label>
+      <input type="text" name="New" id="username1" [(ngModel)]="createNew.newpassword" required>
+
+      <label for="password">Confirm Password</label>
+      <input type="password" name="Confirm" id="password1" [(ngModel)]="createNew.confirmpassword" required>
+
+      <button id='one1' type="submit"(click)="createPassword()" >Login</button><br><br>
+    </form>
+  </div>
